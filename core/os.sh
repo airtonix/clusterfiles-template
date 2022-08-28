@@ -1,21 +1,26 @@
 #!/bin/bash
-HERE=$(
-    cd "${BASH_SOURCE[0]%/*}" || exit
-    pwd
-)
 
-. "$HERE/logging.sh"
+. "${HERE}/core/logging.sh"
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-needs_command() {
+command_required() {
     command_exists "$1" || {
         error "No $1"
         exit 1
     }
 }
+
+
+arg_required () {
+    [ -n "${1}" ] || {
+        warn "${2}"
+        exit 1
+    }
+}
+
 
 get_processor() {
     [[ $(sysctl -e -n machdep.cpu.brand_string) =~ "Apple" ]] && {

@@ -1,12 +1,5 @@
 #!/bin/bash
 
-requires_arg () {
-    [ -n "${1}" ] || {
-        warn "${2}"
-        exit 1
-    }
-}
-
 log () {
     prefix='[CLUSTERFILES-INSTALL]'
     echo "$prefix $(slugify_timestamp) :: ${*}"
