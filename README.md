@@ -21,7 +21,9 @@ $ curl -L https://raw.github.com/airtonix/clusterfiles/master/pull.sh | sh
 Now reload your shell
 
 ```sh
-$ clusterfiles help
+$ clusterfiles
+
+# prints help
 ```
 
 ## Quickstart
@@ -29,14 +31,21 @@ $ clusterfiles help
 
 ```sh
 $ clusterfiles setup
-# time passes
 
-$ clusterfiles master masternode username sshkeypath
-# time passes, logs spam
+# sets up asdf
+# installs asdf plugins for k3sup, flux2
+# installs k3sup and flux2 cli tools locally
 
-$ clusterfiles join workernode username sshkeypath
-# time passes, logs spam
+$ clusterfiles master masternode.hostname username sshkeypath
+# connects to masternode.hostname via ssh with username and sshkeypath
+# installs k3s as master node
+# retrieves kubeconfig and stores it locally as kubeconfig-masternode.hostname
 
-$ clusterfiles bootstrap
+$ clusterfiles join workernode.hostname username sshkeypath
+# connects to masternode.hostname via ssh with username and sshkeypath
+# installs k3s as worker agent
+# retrieves kubeconfig and stores it locally as kubeconfig-workernode-hostname
+
+$ clusterfiles bootstrap ssh://git@github.com/owner/repo.git
 # time passes, logs spam
 ```

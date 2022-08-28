@@ -3,6 +3,18 @@
 . "${HERE}/core/logging.sh"
 . "${HERE}/core/os.sh"
 
+
+op_command_setup_help(){
+    dedent """
+            Setup
+
+            🧧  Usage
+
+            clusterfiles setup
+        """
+    exit 0
+}
+
 #
 # clone the templates directory and find/replace all  with $1
 op_command_setup() {

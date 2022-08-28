@@ -1,6 +1,11 @@
 #!/bin/sh
 
 . "${HERE}/core/text.sh"
+. "${HERE}/commands/setup.sh"
+. "${HERE}/commands/version.sh"
+. "${HERE}/commands/master.sh"
+. "${HERE}/commands/join.sh"
+. "${HERE}/commands/bootstrap.sh"
 
 op_option_h() (op_command_help "$@")
 op_option_help() (op_command_help "$@")
@@ -9,65 +14,33 @@ op_command_help() (
 
     case $1 in
     "setup")
-        dedent """
-                Setup
-
-                🧧  Usage
-
-                clusterfiles setup
-            """
-        exit 0
+        op_command_setup_help
         ;;
     "master")
-        dedent """
-                Provision master node
-
-                🧧  Usage
-
-                clusterfiles master hostname username sshkey
-            """
-        exit 0
+        op_command_master_help
         ;;
 
     "join")
-        dedent """
-                Provision worker node and join it to the master node
-
-                🤚 requires a working master node
-
-                🧧  Usage
-
-                clusterfiles join hostname username sshkey
-            """
-        exit 0
+        op_command_join_help
         ;;
 
     "bootstrap")
-        dedent """
-                Setup continous deployment on the masternode
-
-                🤚 requires a working master node
-
-                🧧  Usage
-
-                clusterfiles bootstrap
-            """
-        exit 0
+        op_command_bootstrap_help
         ;;
 
     *)
         dedent """
-                🧧  Usage
+        🧧  Usage
 
-                $ clusterfiles [command]
+        $ clusterfiles [command]
 
-                🧧 Commands
+        🧧 Commands
 
-                setup
-                master
-                join
-                bootstrap
-            """
+        setup
+        master
+        join
+        bootstrap
+        """
         exit 0
         ;;
     esac

@@ -21,6 +21,13 @@ arg_required () {
     }
 }
 
+envvar_required () {
+    [ -z "${1}" ] || {
+        warn "Missing required envvar ${1}"
+        exit 1
+    }
+}
+
 
 get_processor() {
     [[ $(sysctl -e -n machdep.cpu.brand_string) =~ "Apple" ]] && {
