@@ -5,6 +5,7 @@ HERE=$(dirname "${BASH_SOURCE}")
 
 . "${HERE}/core/cli.sh"
 
+. "${HERE}/commands/default.sh"
 . "${HERE}/commands/version.sh"
 . "${HERE}/commands/help.sh"
 . "${HERE}/commands/setup.sh"
