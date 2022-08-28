@@ -34,13 +34,39 @@ op_command_help() (
             """
         exit 0
         ;;
-    "provision")
+    "master")
         dedent """
-                Provision
+                Provision master node
 
                 🧧  Usage
 
-                clusterfiles provision SSH_CONNECTION_STRING
+                clusterfiles master hostname username sshkey
+            """
+        exit 0
+        ;;
+
+    "join")
+        dedent """
+                Provision worker node and join it to the master node
+
+                🤚 requires a working master node
+
+                🧧  Usage
+
+                clusterfiles join hostname username sshkey
+            """
+        exit 0
+        ;;
+
+    "bootstrap")
+        dedent """
+                Setup continous deployment on the masternode
+
+                🤚 requires a working master node
+
+                🧧  Usage
+
+                clusterfiles bootstrap
             """
         exit 0
         ;;
@@ -54,7 +80,9 @@ op_command_help() (
                 🧧 Commands
 
                 setup
-                provision
+                master
+                join
+                bootstrap
             """
         exit 0
         ;;

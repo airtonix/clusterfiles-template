@@ -22,9 +22,12 @@ $ clusterfiles help
 $ clusterfiles setup
 # time passes
 
-$ clusterfiles provision master masternode username sshkeypath
+$ clusterfiles master masternode username sshkeypath
 # time passes, logs spam
 
-$ clusterfiles provision slave workernode1 username sshkeypath
+$ clusterfiles join workernode username sshkeypath
+# time passes, logs spam
+
+$ clusterfiles bootstrap
 # time passes, logs spam
 ```
