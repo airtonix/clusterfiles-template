@@ -35,7 +35,7 @@ op_command_bootstrap() {
     arg_required "$2" "2: Missing github repository"
     envvar_required "GITHUB_TOKEN"
 
-    flux bootstrap git \
+    flux bootstrap github \
         --owner="$1" \
         --repository="$2" \
         --branch="${BOOTSTRAP_GIT_BRANCH}" \
