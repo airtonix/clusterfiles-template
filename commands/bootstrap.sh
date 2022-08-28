@@ -40,5 +40,6 @@ op_command_bootstrap() {
         --repository="$2" \
         --branch="${BOOTSTRAP_GIT_BRANCH}" \
         --path="./clusters/${BOOTSTRAP_GIT_CLUSTER_NAME}" \
+        --token-auth \
         --personal
 }
