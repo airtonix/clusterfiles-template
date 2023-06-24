@@ -17,16 +17,18 @@ info () {
 
 log "Start"
 
-CLUSTERFILES=~/.clusterfiles
+CLUSTERFILES="$HOME/.clusterfiles"
 
 if [ -d $CLUSTERFILES ]; then
   cd $CLUSTERFILES;
   git pull
 else
-  git clone https://github.com/airtonix/clusterfiles.git $CLUSTERFILES
+  git clone git@github.com:airtonix/clusterfiles.git $CLUSTERFILES
   cd $CLUSTERFILES
 fi
 
+#
+# ensure the bin is executable
 chmod +x ./clusterfiles
 
 echo "export PATH=\$PATH:$CLUSTERFILES" >> ~/.zshrc
