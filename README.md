@@ -15,14 +15,14 @@ Uses [`asdf`](https://github.com/asdf-vm/asdf), [`k3sup`](k3sup)  and [`flux2`](
 
 ## Gettings started
 
-```sh
-$ curl -L https://raw.githubusercontent.com/airtonix/clusterfiles-template/master/pull.sh | sh
+```shell
+curl -L https://raw.githubusercontent.com/airtonix/clusterfiles-template/master/pull.sh | sh
 ```
 
 Now reload your shell
 
-```sh
-$ clusterfiles
+```shell
+clusterfiles
 
 # prints help
 ```
@@ -30,24 +30,24 @@ $ clusterfiles
 ## Quickstart
 
 
-```sh
-$ clusterfiles setup
+```shell
+clusterfiles setup
 
 # sets up asdf
 # installs asdf plugins for k3sup, flux2
 # installs k3sup and flux2 cli tools locally
 
-$ clusterfiles master masternode.hostname username sshkeypath
+clusterfiles master masternode.hostname username sshkeypath
 # connects to masternode.hostname via ssh with username and sshkeypath
 # installs k3s as master node
 # retrieves kubeconfig and stores it locally as kubeconfig-masternode.hostname
 
-$ clusterfiles join workernode.hostname username sshkeypath
+clusterfiles join workernode.hostname username sshkeypath
 # connects to masternode.hostname via ssh with username and sshkeypath
 # installs k3s as worker agent
 # retrieves kubeconfig and stores it locally as kubeconfig-workernode-hostname
 
-$ clusterfiles bootstrap ssh://git@github.com/owner/repo.git
+clusterfiles bootstrap ssh://git@github.com/owner/repo.git
 # time passes, logs spam
 ```
 
@@ -65,8 +65,8 @@ Possible issues:
 
 Confirmations:
 
-```
-$ kubectl run -it --rm --restart=Never busybox --image=busybox:1.28 -- nslookup google.com
+```shell
+kubectl run -it --rm --restart=Never busybox --image=busybox:1.28 -- nslookup google.com
 ```
 
 Should output something like:
@@ -90,11 +90,11 @@ pod default/busybox terminated (Error)
 
 Then most likely, we need to disable firewall (or ideally allow traffic from the k3s subnet):
 
-```
-$ ssh node
-$ iptables --flush && \
-iptables -tnat --flush && \
-systemctl stop firewalld && \
-systemctl disable firewalld && \
-systemctl restart docker
+```shell
+ssh node
+iptables --flush && \
+  iptables -tnat --flush && \
+  systemctl stop firewalld && \
+  systemctl disable firewalld && \
+  systemctl restart docker
 ```
