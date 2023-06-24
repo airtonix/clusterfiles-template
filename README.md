@@ -16,7 +16,7 @@ Uses [`asdf`](https://github.com/asdf-vm/asdf), [`k3sup`](k3sup)  and [`flux2`](
 ## Gettings started
 
 ```sh
-$ curl -L https://raw.github.com/airtonix/clusterfiles/master/pull.sh | sh
+$ curl -L https://raw.githubusercontent.com/airtonix/clusterfiles-template/master/pull.sh | sh
 ```
 
 Now reload your shell
